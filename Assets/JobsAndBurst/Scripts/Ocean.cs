@@ -1,5 +1,6 @@
 ﻿using Unity.Collections;
 using Unity.Jobs;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Profiling;
 
@@ -66,7 +67,8 @@ public class Ocean : MonoBehaviour
             float ripple = Mathf.Sin(time + offset.magnitude);
 
             //perlin
-            float perlin = Mathf.PerlinNoise((time + vertex.x) * scale, (time + vertex.z) * scale);
+            float perlin = Mathf.PerlinNoise((time + vertex.x) * scale, (time + vertex.z) * scale); //calls the native code
+            //float perlin = PerlinNoise.cnoise(new float2((time + vertex.x) * scale, (time + vertex.z) * scale)); //burst version is actually slower
             vertex.y = perlin * perlinStrength + ripple * rippleStrength;
 
             vertices[i] = vertex;
