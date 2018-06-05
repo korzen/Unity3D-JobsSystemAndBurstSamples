@@ -491,12 +491,15 @@ public unsafe class OceanDoubleBuffered : MonoBehaviour
     private void OnDestroy()
     {
         m_OceanJobHandle.Complete();
-        m_Vertices[READ].Dispose();
-        m_Vertices[WRITE].Dispose();
-        m_Normals.Dispose();
-        m_TriNormals.Dispose();
-        m_VerticesToTrianglesMapping.Dispose();
-        m_VerticesToTrianglesMappingCount.Dispose();
-        m_Indices.Dispose();
+        if (m_Normals.IsCreated)
+        {
+            m_Vertices[READ].Dispose();
+            m_Vertices[WRITE].Dispose();
+            m_Normals.Dispose();
+            m_TriNormals.Dispose();
+            m_VerticesToTrianglesMapping.Dispose();
+            m_VerticesToTrianglesMappingCount.Dispose();
+            m_Indices.Dispose();
+        }
     }
 }

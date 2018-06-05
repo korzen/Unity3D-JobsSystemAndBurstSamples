@@ -24,7 +24,7 @@ public class GeneratePlaneMesh : MonoBehaviour
 
     }
 
-    Mesh GenerateMesh()
+    public Mesh GenerateMesh()
     {
         Mesh mesh = new Mesh();
         mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;

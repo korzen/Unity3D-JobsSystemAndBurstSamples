@@ -6,6 +6,7 @@ using UnityEngine.Profiling;
 
 /// <summary>
 /// A simplest possible parallelization of the ocean simulation using ParallelForJob to modify the mesh vertices.
+/// Check a "multithreaded" box to enable jobs and burst
 /// More examples can be found here https://github.com/stella3d/job-system-cookbook
 /// </summary>
 public class Ocean : MonoBehaviour
