@@ -4,6 +4,7 @@ using Unity.Jobs;
 using Unity.Jobs.LowLevel;
 using Unity.Jobs.LowLevel.Unsafe;
 using UnityEngine;
+using Unity.Burst;
 using Unity.Mathematics;
 using UnityEngine.Profiling;
 using System.Threading;
@@ -15,7 +16,7 @@ using System.Threading;
 /// </summary>
 public class SimdTest : MonoBehaviour
 {
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct SumJob : IJob
     {
         public int dataSize;
@@ -38,7 +39,7 @@ public class SimdTest : MonoBehaviour
         }
     }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct Float1Job : IJob
     {
         public int dataSize;
@@ -66,7 +67,7 @@ public class SimdTest : MonoBehaviour
         }
     }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct Float3Job : IJob
     {
         public int dataSize;
@@ -94,7 +95,7 @@ public class SimdTest : MonoBehaviour
         }
     }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct Float4to3Job : IJob
     {
         public int dataSize;
@@ -124,7 +125,7 @@ public class SimdTest : MonoBehaviour
 
 
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct Float4Job : IJob
     {
         public int dataSize;
@@ -154,7 +155,7 @@ public class SimdTest : MonoBehaviour
         }
     }
 
-[ComputeJobOptimization]
+[BurstCompile]
 struct FloatAndFloat3Job : IJob
 {
     public int dataSize;
@@ -188,7 +189,7 @@ struct FloatAndFloat3Job : IJob
     }
 }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct FloatAndFloat4Job : IJob
     {
         public int dataSize;
@@ -221,7 +222,7 @@ struct FloatAndFloat3Job : IJob
         }
     }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct FloatAndFloat4To3Job : IJob
     {
         public int dataSize;
@@ -255,7 +256,7 @@ struct FloatAndFloat3Job : IJob
         }
     }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct SumFloat4Job : IJob
     {
         public int dataSize;
@@ -278,7 +279,7 @@ struct FloatAndFloat3Job : IJob
         }
     }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct SumUnrollJob : IJob
     {
         public int dataSize;
@@ -305,7 +306,7 @@ struct FloatAndFloat3Job : IJob
         }
     }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct SumUnroll2Job : IJob
     {
         public int dataSize;
@@ -335,7 +336,7 @@ struct FloatAndFloat3Job : IJob
         }
     }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct SumUnroll3Job : IJob
     {
         public int dataSize;
@@ -364,7 +365,7 @@ struct FloatAndFloat3Job : IJob
         }
     }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct SumParallelForJob : IJobParallelFor
     {
         [ReadOnly]
@@ -406,7 +407,7 @@ struct FloatAndFloat3Job : IJob
         }
     }
 
-    //  [ComputeJobOptimization]
+    //  [BurstCompile]
     struct VerifyParallelForJob : IJobParallelFor
     {
         [ReadOnly]
@@ -462,17 +463,17 @@ struct FloatAndFloat3Job : IJob
 
         for (int i = 0; i < dataSize; i++)
         {
-            dataA[i] = Random.value;
-            dataB[i] = Random.value;
-            dataC[i] = Random.value;
+            dataA[i] = UnityEngine.Random.value;
+            dataB[i] = UnityEngine.Random.value;
+            dataC[i] = UnityEngine.Random.value;
 
-            data3A[i] = new float3(Random.value, Random.value, Random.value);
-            data3B[i] = new float3(Random.value, Random.value, Random.value);
-            data3C[i] = new float3(Random.value, Random.value, Random.value);
+            data3A[i] = new float3(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
+            data3B[i] = new float3(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
+            data3C[i] = new float3(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
 
-            data4A[i] = new float4(Random.value, Random.value, Random.value, Random.value);
-            data4B[i] = new float4(Random.value, Random.value, Random.value, Random.value);
-            data4C[i] = new float4(Random.value, Random.value, Random.value, Random.value);
+            data4A[i] = new float4(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
+            data4B[i] = new float4(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
+            data4C[i] = new float4(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
         }
 
      

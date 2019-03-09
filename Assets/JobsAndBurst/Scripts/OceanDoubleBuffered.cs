@@ -1,5 +1,6 @@
 ﻿
 using System;
+using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
@@ -97,7 +98,7 @@ public unsafe class OceanDoubleBuffered : MonoBehaviour
         m_ModifiedNormals = new Vector3[m_Mesh.vertexCount];
     }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct OceanJob : IJobParallelFor
     {
         [ReadOnly]
@@ -127,7 +128,7 @@ public unsafe class OceanDoubleBuffered : MonoBehaviour
         }
     }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct RecalculateNormalsJob : IJob
     {
         [ReadOnly]
@@ -181,7 +182,7 @@ public unsafe class OceanDoubleBuffered : MonoBehaviour
         }
     }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct ComputeTrisNormalsJob : IJobParallelFor
     {
         [ReadOnly]
@@ -213,7 +214,7 @@ public unsafe class OceanDoubleBuffered : MonoBehaviour
         }
     }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct ComputeNormalsJob : IJobParallelFor
     {
         [ReadOnly]
@@ -246,7 +247,7 @@ public unsafe class OceanDoubleBuffered : MonoBehaviour
 
 
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct ComputeTrisNormalsJobSimd : IJobParallelFor
     {
         [ReadOnly]
@@ -278,7 +279,7 @@ public unsafe class OceanDoubleBuffered : MonoBehaviour
         }
     }
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct ComputeNormalsJobSimd : IJobParallelFor
     {
         [ReadOnly]
@@ -313,7 +314,7 @@ public unsafe class OceanDoubleBuffered : MonoBehaviour
 
 
 
-    [ComputeJobOptimization]
+    [BurstCompile]
     struct RecalculateNormalsJobSimdOptimized : IJob
     {
         [ReadOnly]
