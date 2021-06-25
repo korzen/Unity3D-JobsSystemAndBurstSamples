@@ -1,6 +1,6 @@
 # Unity3D-JobsSystemAndBurstSamples
 
-Last checked with Unity 2018.3.7
+Last checked with Unity 2020.3.12
 
 JobBasics - Shows how to use the job system and a couple of patterns how to schedule them in a different ways from FOR loops.
 Just uncomment the subsequent lines JobBasics.cs in the Update loop and observe the effect in the Profiler in Timeline view.
