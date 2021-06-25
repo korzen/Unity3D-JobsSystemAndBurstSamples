@@ -8,7 +8,6 @@ using Unity.Mathematics;
 using UnityEngine.Profiling;
 using System.Runtime.InteropServices;
 using Unity.Collections.LowLevel.Unsafe;
-using Unity.Collections.Experimental;
 using Unity.Collections.LowLevel;
 
 /// <summary>
